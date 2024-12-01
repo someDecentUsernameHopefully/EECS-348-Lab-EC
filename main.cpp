@@ -6,12 +6,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-using namespace std;
-
-// Prototype function, which will be implemented in another file.
-double extractNumber(const string& str);
-
 #include "stringToNumber.cpp"
+using namespace std;
 
 int main() {
 	string input;
@@ -30,7 +26,7 @@ int main() {
 		double output = extractNumber(input);
 
 		if (output != -999999.99) {
-			cout << "The input is: " << fixed << setprecision(4) << number << endl;
+			cout << "The input is: " << fixed << setprecision(4) << output << endl;
 		}
 		else {
 			cout << "The input is invalid!" << endl;
