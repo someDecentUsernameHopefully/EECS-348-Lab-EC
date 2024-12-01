@@ -62,10 +62,12 @@ double extractNumber(const string& str) {
 				}
 				break;
 			case '.':
+				// If decimal multiplier is not zero (placeholder value), then the number is invalid due to having multiple decimal points.
 				if (multiplier != 0.) {
 					throw 1;
 				}
 				else {
+					// Shift to decimals
 					multiplier = 0.1;
 				}
 				break;
@@ -78,8 +80,7 @@ double extractNumber(const string& str) {
 					throw 1;
 				}
 
-				cout << num << ", " << multiplier << endl;
-
+				// Differing behavior depending on if pre or post decimal point.
 				if (multiplier == 0.) {
 					toReturn *= 10.;
 					toReturn += num;
