@@ -6,8 +6,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "stringToNumber.cpp"
 using namespace std;
+
+// Prototype function, defined below.
+double extractNumber(const string&);
 
 int main() {
 	string input;
@@ -33,5 +35,9 @@ int main() {
 		}
 	}
 
+	return 0;
+}
+
+double extractNumber(const string& str) {
 	return 0;
 }
