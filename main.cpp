@@ -39,5 +39,66 @@ int main() {
 }
 
 double extractNumber(const string& str) {
-	return 0;
+	double toReturn = 0;
+	double multiplier = 0;
+	unsigned int length = str.length();
+	bool negativeFlag = false;
+
+	try {
+		for (unsigned int i = 0; i < length; i++) {
+			char character = str[i];
+			switch (character) {
+			case '+':
+				if (i != 0) {
+					throw 1;
+				}
+				break;
+			case '-':
+				if (i != 0) {
+					throw 1;
+				}
+				else {
+					negativeFlag = true;
+				}
+				break;
+			case '.':
+				if (multiplier != 0.) {
+					throw 1;
+				}
+				else {
+					multiplier = 0.1;
+				}
+				break;
+			default:
+				// The default behavior for casting strings to integers is to get the ASCII number, so we use that to get a value from 0-9 as follows:
+				double num = (double)character - (double)'0';
+
+				// Check if the character is numeric by checking if it's in the range of 0-9:
+				if (num < 0. || num > 9.) {
+					throw 1;
+				}
+
+				cout << num << ", " << multiplier << endl;
+
+				if (multiplier == 0.) {
+					toReturn *= 10.;
+					toReturn += num;
+				}
+				else {
+					toReturn += num * multiplier;
+					multiplier /= 10.;
+				}
+				break;
+			};
+		}
+	}
+	catch (int err) {
+		return -999999.99;
+	}
+
+	if (negativeFlag) {
+		toReturn *= -1.;
+	}
+
+	return toReturn;
 }
